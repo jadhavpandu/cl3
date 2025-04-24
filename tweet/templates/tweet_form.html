@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+chai aur tweet
+{% endblock  %}
+
+{% block content %}
+  <h1 class="text-center text-white">welcome to chai aur djangio project</h1>
+
+  <h2>{%if form.instance.pk %} 
+    Edit Tweet 
+    {% else %} 
+    Create tweet 
+    <form method="post" enctype= "multipart/form-data" class="form">
+      {% csrf_token %}
+      {{ form.as_p}}
+      <button class="btn btn-warning" type="submit">Submit</button>
+    </form>
+    <a href="{% url 'tweet_list' %}">back to tweet list</a>
+    {% endif %}
+  </h2>
+{% endblock  %}
